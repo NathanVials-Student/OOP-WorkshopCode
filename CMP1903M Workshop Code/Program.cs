@@ -14,7 +14,7 @@ namespace CMP1903MWorkshopCode
             int x2 = -1;
             int y2 = -1;
 
-            int answer1 = 0;
+            int answer1 = 1;
 
             //Problem 2
             //What is the denominator of the slope between these points?
