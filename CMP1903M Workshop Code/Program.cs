@@ -6,75 +6,59 @@ namespace CMP1903MWorkshopCode
     {
         static void Main(string[] args)
         {
-            //Problem 1
-            //(-4, -5) and (-1, -1) describe two points. What is the distance between them?
-            int x1 = -4;
-            int y1 = -4;
-
-            int x2 = -1;
-            int y2 = -1;
+            //Week 2
+            //EITHER:
+            //Read in the text file if you want (or are able) [HINT: read into a list of strings]
+            //Split the first four numbers
+            List<string> streets = new List<string>();
 
 
-            int x3 = x1 - x2;
-            int y3 = y1 - y2;
 
-            int x4 = (int)Math.Pow(x3, 2);
-            int y4 = (int)Math.Pow(y3, 2);
+            //OR:
+            //Manual (check each street code individually without reading them in automatically)
+            //long, tedious, etc, etc
+            //7778[8] is a correct street code
+            //Second two variables here are to use when calculating the checksum
+            int streetCode = 7778;
+            int checkSum = 8;
+            int total = 1;
+            int total2 = 0;
 
-            int z1 = x4 + y4;
 
-            int answer1 = (int)Math.Sqrt(z1);
-            //Console.WriteLine(answer1);
-
-            //Problem 2
-            //What is the denominator of the slope between these points?
-            //m=(y2-y1)/(x2-x1)
-
-            int answer2 = (y2-y1)/(x2-x1);
-            //Console.WriteLine(answer2);
-
-            //Problem 3
-            //What is the greatest common divisor (GCD) of 1124 and 136?
-            var firstDivisors = new List<int>();
-            
-            for (int i = 3; i < ((1124/2)+1); i++)
+            //Multiply all the numbers together in the 4 digit code (7*7*7*8)
+            //Can do it by using the mod '%' operator and the divide '/' operator
+            //Reduce streetCode by 1 digit each time through the loop
+            while (streetCode > 0)
             {
-                if (1124 % i == 0)
-                {
-                    firstDivisors.Add(i);
-                    //count++;
-                }
+
+
             }
 
-            var secondDivisors = new List<int>();
 
-            for (int i = 3; i < ((136/2)+1); i++)
+            //Add the digits of the multiplication total together
+            //infinite loop until the total gets to one digit - the checksum
+            //Use 'break;' to break out of the loop
+            while (true)
             {
-                if (136 % i == 0)
+                //Do the same as above, adding not multiplying
+                while (total > 0)
                 {
-                    secondDivisors.Add(i);
+
+
                 }
+
+                //Check if total2 is 2 digits or more
+                //If not, break out of the loop
+                if (total2 > 9)
+                {
+
+                }
+                else { break; }
             }
 
-            var commonDivisors = new List<int>();
+            //Check if the final checksum is the same as the checksum in the street code.
 
-            foreach (int i in firstDivisors)
-            {
-                foreach (int j in secondDivisors)
-                {
-                    if (i == j)
-                    {
-                        commonDivisors.Add(j);
-                    }
-                }
-            }
 
-            int length = commonDivisors.Count;
-            int answer3 = commonDivisors[length - 1];
-            Console.WriteLine(answer3);
-
-            //Problem 4
-            //What is the remainder, when you divide the square of the sum of the first ten natural numbers by ten?
         }
     }
 }
