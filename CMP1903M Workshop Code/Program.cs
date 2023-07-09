@@ -30,7 +30,6 @@ namespace CMP1903MWorkshopCode
                     firstResult = firstResult * digit;
                     count++;
                 }
-                Console.WriteLine(firstResult);
                 
                 //add up digits of first result
                 string strResult = firstResult.ToString();
@@ -45,29 +44,26 @@ namespace CMP1903MWorkshopCode
                     secondResult = secondResult + digit;
                     count++;
                 }
-                //Console.WriteLine(secondResult);
 
                 //if second result is 2 digits
                 string strSecondResult = secondResult.ToString();
+
                 if (strSecondResult.Length > 1)
                 {
-                    int digit1 = strSecondResult[0];
-                    int digit2 = strSecondResult[1];
-                    secondResult = digit1 + digit2;
-                }
-                Console.WriteLine(secondResult);
-               
+                    string strFirstDigit = strSecondResult[0].ToString();
+                    string strSecondDigit = strSecondResult[1].ToString();
 
+                    int firstDigit = int.Parse(strFirstDigit);
+                    int secondDigit = int.Parse(strSecondDigit);
+                    secondResult = firstDigit + secondDigit;
+                }
 
                 //check against checksum
                 int checksum = int.Parse(street[5].ToString());
-                Console.WriteLine(checksum);
-
                 if (checksum == secondResult)
                 {
                     Console.WriteLine("Same");
                 }
-
                 Console.WriteLine(" ");
             }
 
