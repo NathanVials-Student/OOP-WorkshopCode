@@ -1,5 +1,4 @@
-﻿//using CMP1903M_Workshop_Code;
-using System;
+﻿using System;
 
 namespace CMP1903MWorkshopCode
 {
@@ -7,100 +6,22 @@ namespace CMP1903MWorkshopCode
     {
         static void Main(string[] args)
         {
-            //Week 3
-            //Challenge: Get the message from the encrypted text
+            //Week 4
+            //Challenge:  Determine what the value of the accumulator will be when the code is finished running
             //
-            //1. EITHER:    Read in the .txt file into a List of Strings (or anything else?)
-            //   OR:        Read in each line one at a timen and get its maximum character 
-            //2. For each string:
-            //      Count each character in the string
-            //      The maximum is the character
-            //3. Output the unencrypted message.
+            //Read each line of the input.
+            //Determine whether it is a 'acc' or 'jmp' command for each line
+            //Determine the value on each line
+            //Find the value of 'acc' at the end
+            //HINT: We can read each line as an array (or List) of strings; check [0] for 'a' or 'j', then check [4] and [5] for the values
+            //OR: we could split each string at the space into an operation string and a value string
+            //Can we read line by line instead of storing in a collection?
 
-            string[] codes = File.ReadAllLines("week3codes.txt");
-            foreach (string code in codes)
-            {
-                //Console.WriteLine(code);
-                Dictionary<string, int> letterDic = new Dictionary<string, int>();
-                int count = 0;
-                while (count < code.Length)
-                {
-                    //Console.WriteLine(code[count]);
-                    if (letterDic.ContainsKey(code[count].ToString()))
-                    {
-                        letterDic[code[count].ToString()]++;
-                    }
-                    else
-                    {
-                        letterDic.Add(code[count].ToString(), 1);
-                    }
-                    count++;
-                }
-                foreach (KeyValuePair<string, int> letter in letterDic)
-                {
-                    //Console.WriteLine("{0} = {1}", letter.Key, letter.Value);
-                }
-                //Console.WriteLine(" ");
-            }
 
-            Console.WriteLine("Enter Message");
-            string str = Console.ReadLine();
-            Dictionary<string, string> morse = new Dictionary<string, string>()
-            { {"A", ".-" },
-            {"B", "-..."},
-            {"C", "-.-." },
-            {"D", "-.." },
-            {"E", "." },
-            {"F", "..-." },
-            {"G", "--." },
-            {"H", "...." },
-            {"I", ".." },
-            {"J", ".---" },
-            {"K", "-.-" },
-            {"L", ".-.." },
-            {"M", "--" },
-            {"N", "-." },
-            {"O", "---" },
-            {"P", ".--." },
-            {"Q", "--.-" },
-            {"R", ".-." },
-            {"S", "..." },
-            {"T", "-" },
-            {"U", "..-" },
-            {"V", "...-" },
-            {"W", ".--" },
-            {"X", "-..-" },
-            {"Y", "-.--" },
-            {"z", "--.." },
-            {" ", " " } };
-
-            for (int i = 0; i < str.Length; i++)
-            {
-                string letter = str[i].ToString().ToUpper();
-                string morseLetter = morse[letter];
-                Console.Write(morseLetter);
-                Console.Write(", ");
-
-            }
-            Console.WriteLine(" ");
-
-            //Week 3
-            //Task 1: create Message object, call the readTextFromInput() method
-            //Task 2: create Atbash object Step 1: pass message to encode() method Step 2: put in the encode logic
-            //Task 3: put in the decode logic to the decode() method, check if it works
-            //Task 4: read text to encode from a file
-
-            Message message = new Message();
-            message.readMessageFromInput();
-            
-            
-            Atbash encoder = new Atbash();
-            string encodedMessage = encoder.encode(message.message);
-            Console.WriteLine(encodedMessage);
-            string decodedMessage = encoder.decode(encodedMessage);
-            Console.WriteLine(decodedMessage);
-            
-            
+            //Week 4
+            //Task 1: Add constructors to the Person() class
+            //Task 2: create a 'screenName' field within Person
+            //Task 3: Create a 'collection' of Person, iterate (i.e. loop) through the collection outputting data for each Person
 
 
         }
