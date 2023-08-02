@@ -71,7 +71,8 @@ namespace CMP1903MWorkshopCode
             {"W", ".--" },
             {"X", "-..-" },
             {"Y", "-.--" },
-            {"z", "--.." }};
+            {"z", "--.." },
+            {" ", " " } };
 
             for (int i = 0; i < str.Length; i++)
             {
@@ -92,9 +93,16 @@ namespace CMP1903MWorkshopCode
             Message message = new Message();
             message.readMessageFromInput();
             
+            
             Atbash encoder = new Atbash();
             string encodedMessage = encoder.encode(message.message);
             Console.WriteLine(encodedMessage);
+            string decodedMessage = encoder.decode(encodedMessage);
+            Console.WriteLine(decodedMessage);
+            
+            
+
+
         }
     }
 }

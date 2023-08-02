@@ -20,7 +20,12 @@ namespace CMP1903MWorkshopCode
 
         public string decode(string text)
         {
-            return "";
+            string output = "";
+            for ( int x = text.Length - 1; x > -1; x--)
+            {
+                output = output + text[x];
+            }
+            return output;
         }
     }
 }
