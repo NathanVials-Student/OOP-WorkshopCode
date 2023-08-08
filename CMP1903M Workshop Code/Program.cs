@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CMP1903M_Workshop_Code;
+using System;
+using System.Xml;
 
 namespace CMP1903MWorkshopCode
 {
@@ -26,7 +28,7 @@ namespace CMP1903MWorkshopCode
             while (stop != true)
             {
                 string code = codes[count]; 
-                Console.WriteLine(code);
+                //Console.WriteLine(code);
 
                 int length = code.Length;
                 string op = code.Substring(0, 3);
@@ -44,18 +46,18 @@ namespace CMP1903MWorkshopCode
                     {
                         acc = acc - intAmount;
                     }
-                    Console.WriteLine(acc);
+                    //Console.WriteLine(acc);
                 }
                 if (op == "jmp")
                 {
                     count = count + intAmount;
-                    Console.WriteLine(acc);
+                    //Console.WriteLine(acc);
                 }
                 if(op == "nop")
                 {
-                    Console.WriteLine(acc);
+                    //Console.WriteLine(acc);
                 }
-                Console.WriteLine("");
+                //Console.WriteLine("");
 
                 count++;
                 if (count == fileLength)
@@ -66,7 +68,7 @@ namespace CMP1903MWorkshopCode
 
             string str = "Hello there";
             string subStr = str.Substring(0, 5);
-            Console.WriteLine(subStr);
+            //Console.WriteLine(subStr);
 
 
 
@@ -75,8 +77,29 @@ namespace CMP1903MWorkshopCode
             //Task 1: Add constructors to the Person() class
             //Task 2: create a 'screenName' field within Person
             //Task 3: Create a 'collection' of Person, iterate (i.e. loop) through the collection outputting data for each Person
+            List<Person> people = new List<Person>();
 
+            Person p1 = new Person();
+            Person.addPersonToList(people, p1);
 
+            Person p2 = new Person("Nathan", "Vials");
+            Person.addPersonToList(people, p2);
+            
+            Person p3 = new Person("Keira", "Hedger", "KeiraHedger@gmail.com");
+            Person.addPersonToList(people, p3);
+
+            string p1Output = (Person.output(p1));
+            string p2Output = (Person.output(p2));
+            string p3Output = (Person.output(p3));
+
+            Print.print(p1Output);
+            Print.print(p2Output);
+            Print.print(p3Output);
+
+            Console.WriteLine(" ");
+            Print.DTtrack(people);
+
+            
         }
     }
 }
