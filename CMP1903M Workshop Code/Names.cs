@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_Workshop_Code
 {
-    class EmptyHistoryException: Exception
+    class Names
     {
-        public EmptyHistoryException(string message) : base(message)
-        {
-            //message = "Bad";
-        }
+        //class Names to hold your list of names and various methods
     }
 }
