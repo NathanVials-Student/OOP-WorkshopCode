@@ -1,153 +1,59 @@
-﻿using CMP1903M_Workshop_Code;
+﻿//using CMP1903M_Workshop_Code;
 using System;
-using System.Security.Cryptography.X509Certificates;
 
-namespace CMP1903MWorkshopCode
+namespace CMP1903M_Workshop_Code
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //Week 6
-            //Challenge: What are the valid barcode numbers on passenger's tickets?
+            //Week 7
+            //Challenge: Find the train station gate passcodes
             //
+            //range = 147981(147,999) – 691423(689,999)
+            //valid if - any two adjacent numbers are the same, numbers always increase or stay the same
+            
 
-            //step 1 - sum all digits in odd positions
-            //step 2 - sum all digits in even positions and multiply result by 3
-            //step 3 - add two results, take final digit, take it away from 10, compare with check digit
-            string[] barcodes = File.ReadAllLines("barcodes.txt");
-            foreach (string barcode in barcodes)
+
+
+
+
+
+
+
+
+            //Week 7
+            //Detached = 1, semi = 2, terrace = 3, unknown = 4
+            List<House> houses = new List<House>();
+            houses.Add(new House(1, "1, The Street, Lincoln, Lincolnshire, LN1 0AB", 100000, 4, true, 2));
+            houses.Add(new House(2, "5, The Street, Lincoln, Lincolnshire, LN1 0AB", 130000, 4, true, 1));
+            houses.Add(new House(3, "58 Christopher Drive", 300000, 4, false, 4));
+
+        
+
+            var result = from h in houses
+                         where h.propertyType == Enums.PType.SemiDetached
+                         select h;
+
+            
+
+            List<Property> properties = new List<Property>();
+            foreach (House h in houses)
             {
-                //initialise useful collections/variables
-                bool even = false;
-                List<string> evens = new List<string>();
-                List<string> odds = new List<string>();
-
-                string strCheckDigit = barcode[12].ToString();
-                int checkDigit = int.Parse(strCheckDigit);
-
-                //populate lists of numbers at even and odd indexes
-                for (int count = 0; count < 12;  count++)
-                {
-                    if (even)
-                    {
-                        evens.Add(barcode[count].ToString());
-                        even = false;
-                    }
-                    else
-                    {
-                        odds.Add(barcode[count].ToString());
-                        even = true;
-                    }
-                }
-
-                //initialise result variables
-                int evenResult = 0;
-                int oddResult = 0;
-                int result = 0;
-
-                //calculate results
-                foreach (string x  in evens)
-                {
-                    int num = int.Parse(x);
-                    evenResult += num;
-                }
-                evenResult = evenResult * 3;
-
-                foreach (string x in odds)
-                {
-                    int num = int.Parse(x);
-                    oddResult += num;
-                }
-
-                result = evenResult + oddResult;
-                string strResult = result.ToString();
-
-                //find digit to compare to checkdigit from result
-                int length = strResult.Length;
-                string strLastDigit = strResult[length - 1].ToString();
-                int lastDigit = int.Parse(strLastDigit);
-                lastDigit = 10 - lastDigit;
-                if (lastDigit == 10)
-                {
-                    lastDigit = 0;
-                }
-
-                //valid/invalid
-                if (lastDigit == checkDigit)
-                {
-                    //Console.WriteLine("Valid\n");
-                }
-                else
-                {
-                    //Console.WriteLine("Invalid\n");
-                }
-
+                properties.Add(h);
             }
 
+            properties.Add(new Shop(4, "Primark", 500000, 300.8785F, 1, 1));
+            properties.Add(new Industrial(5, "Bean Factory", 400000, 500.45F, 1, 2));
 
-
-            //Week 6
-            //Task 1: Using a List object
-            //List called 'names' to hold a list of names
-            static bool contains(List<string> names, string name)
+            foreach (Property p in properties)
             {
-                foreach (string n in names)
-                {
-                    if (n == name)
-                    {
-                        Console.WriteLine("True");
-                        return true;
-                    }
-                }
-
-                Console.WriteLine("False");
-                return false;
+                Console.WriteLine($"Address: {p.Address}");
+                Console.WriteLine($"Value: {p.Value}");
+                //Console.WriteLine($"Type of Property: {p.propertyType}");
+                //if (p.GetType() == typeof(House))
+                Console.WriteLine();
             }
-
-            //Olivia, Oliver, Amelia, George, Isla, Harry, Ava, Noah, Emily, Jack 
-            NameCollection names = new NameCollection();
-            names.addName("Olivia");
-            names.addName("Oliver");
-            names.addName("Amelia");
-            names.addName("George");
-            names.addName("Isla");
-            names.addName("Harry");
-            names.addName("Ava");
-            names.addName("Noah");
-            names.addName("Emily");
-            names.addName("Jack");
-
-            names.outputList();
-            Console.WriteLine(names.isNameInList("barbs"));
-            Console.WriteLine(names.isNameInList("Jack"));
-
-            Console.WriteLine(names.removeName("barbs"));
-            Console.WriteLine(names.removeName("Jack"));
-            names.outputList();
-
-            Wait nameQueue = new Wait();
-            nameQueue.addToQueue("Olivia", names);
-            nameQueue.addToQueue("Amelia", names);
-            nameQueue.status();
-
-            names.outputList();
-
-
-            //Check to see if some names are in the list...?
-            //Create a simple search method to check if a name is in the list - don't use LINQ!
-            //What about a simple sequential search (check each name in turn)
-            //Add the names in the workshop task sheet to the list
-            //Use 'Add()' or a list initialiser (List<string> names = new List<string>(){"Olivia", "Oliver", "etc"};)
-
-
-            //Task 2: Use a class to hold your List
-            //Task 3: Create a 'Wait' class to hold a Queue<> collection
-            //Task 4: Use LINQ queries on your collection
-
-
-
-
         }
     }
 }
