@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,9 @@ namespace CMP1903M_Workshop_Code
 {
     class Writer
     {
+        //properties
         StreamWriter sw;
+        //string FileName;
 
         //constructor
         public Writer(string path)
